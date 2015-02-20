@@ -11,4 +11,7 @@ class Music < ActiveRecord::Base
     def count
         PlayHistory.where(music_id: self.id).count()
     end
+
+    def recent
+    end
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         put ':id' => 'musics#edit'
         get 'times' => 'musics#times'
         post ':id/play' => 'musics#play'
+        get 'recent' => 'musics#recent'
       end
     end
   end

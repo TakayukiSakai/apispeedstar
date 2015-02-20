@@ -57,6 +57,12 @@ class MusicsController < ApplicationController
     render text: '', status: 204
   end
 
+  def recent
+    offset = params[:offset].nil? ? 0 : params[:start]
+    limit = params[:limit].nil? ? 100 : params[:limit]
+    @musics = Music.all.limit(limit).offset(offset).order(:title)
+  end
+
   private
     def music_params
       params.permit(:artist_id, :title, :outline)
