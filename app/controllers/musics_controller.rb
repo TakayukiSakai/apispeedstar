@@ -34,6 +34,12 @@ class MusicsController < ApplicationController
     end
   end
 
+  def destroy
+    return render text: '', status: 404 unless Music.exists?(params[:id])
+    Music.find(params[:id]).destroy
+    render text: '', status: 200
+  end
+
   private
     def music_params
       params.permit(:artist_id, :title, :outline)
