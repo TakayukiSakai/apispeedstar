@@ -40,6 +40,17 @@ class MusicsController < ApplicationController
     render text: '', status: 200
   end
 
+  def times
+    offset = params[:offset].nil? ? 0 : params[:start]
+    limit = params[:limit].nil? ? 100 : params[:limit]
+    if params[:id] == nil then
+      @musics = Music.all.limit(limit).offset(offset).order(:title)
+    else
+      return render text: '', status: 400 unless Music.exists?(params[:id])
+      @musics = [Music.find(params[:id])]
+    end
+  end
+
   private
     def music_params
       params.permit(:artist_id, :title, :outline)

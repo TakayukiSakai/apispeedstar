@@ -7,4 +7,8 @@ class Music < ActiveRecord::Base
 
     validates :artist_id, presence: true
     validates :title, presence: true
+
+    def count
+        PlayHistory.where(music_id: self.id).count()
+    end
 end
