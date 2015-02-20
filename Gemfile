@@ -13,6 +13,10 @@ gem 'uglifier'
 
 group :development, :test do
     gem 'spring'
+    gem 'pry-remote'
+    gem 'pry-byebug'
+    gem 'pry-rails'
+    gem 'pry-stack_explorer'
 end
 
 group :production do
