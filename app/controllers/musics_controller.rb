@@ -51,6 +51,12 @@ class MusicsController < ApplicationController
     end
   end
 
+  def play
+    return render text: '', status: 400 unless Music.exists?(params[:id])
+    PlayHistory.create(music_id: params[:id])
+    render text: '', status: 204
+  end
+
   private
     def music_params
       params.permit(:artist_id, :title, :outline)
