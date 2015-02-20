@@ -24,6 +24,16 @@ class MusicsController < ApplicationController
     end
   end
 
+  def edit
+    return render text: '', status: 404 unless Music.exists?(params[:id])
+    return render text: '', status: 400 unless Artist.exists?(params[:artist_id])
+    if Music.find(params[:id]).update(music_params) then
+      render text: '', status: 204
+    else
+      render text: '', status: 400
+    end
+  end
+
   private
     def music_params
       params.permit(:artist_id, :title, :outline)
