@@ -13,6 +13,11 @@ class Music < ActiveRecord::Base
     end
 
     def recent
-        PlayHistory.where(music_id: self.id).order('created_at DESC').first.created_at
+        last_history = PlayHistory.where(music_id: self.id).order('created_at DESC').first
+        if last_history == nil then
+            return nil
+        else
+            return last_history.created_at
+        end
     end
 end
